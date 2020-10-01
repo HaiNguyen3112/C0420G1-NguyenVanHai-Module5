@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "pet": {
+    "color-pick": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/pet",
+            "outputPath": "dist/color-pick",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "pet:build"
+            "browserTarget": "color-pick:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "pet:build:production"
+              "browserTarget": "color-pick:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "pet:build"
+            "browserTarget": "color-pick:build"
           }
         },
         "test": {
@@ -110,19 +110,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "pet:serve"
+            "devServerTarget": "color-pick:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "pet:serve:production"
+              "devServerTarget": "color-pick:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "pet",
+  "defaultProject": "color-pick",
   "cli": {
-    "analytics": "3b7851e5-1c3d-47ee-ac87-75d7d721fca2"
+    "analytics": "56aa4f3a-2fca-48f0-b22b-f2a1a529fcab"
   }
 }
