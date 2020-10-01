@@ -1,0 +1,44 @@
+<h2>Today's article</h2>
+<hr>
+<div *ngFor="let art of articles">
+  <a href="{{art.url}}" target="_blank">{{art.title}}</a>
+  <app-like></app-like>
+</div>
+<hr>
+<form>
+<!--  <div class="input-group">-->
+<!--    <textarea [value]="article.title" cols="70" id="article-title" ></textarea>-->
+<!--  </div>-->
+<!--  <div class="input-group">-->
+<!--    <textarea [value]="article.url" cols="70" id="article-url"></textarea>-->
+<!--  </div>-->
+
+
+<!--  <div class="input-group">-->
+<!--    <textarea [(ngModel)]="article.title" cols="70" [ngModelOptions]="{standalone: true}"></textarea>-->
+<!--  </div>-->
+<!--  <div class="input-group">-->
+<!--    <textarea [(ngModel)]="article.url" cols="70" [ngModelOptions]="{standalone: true}"></textarea>-->
+<!--  </div>-->
+
+  <div class="input-group">
+    <textarea  id="article-title" ></textarea>
+  </div>
+  <div class="input-group">
+    <textarea id="article-url"></textarea>
+  </div>
+
+
+  <button (click)="addArticle()">Add</button>
+
+
+
+
+<!--    <input (click)="updateArticle()" type="button" value="Update" class="btn btn-primary">-->
+
+</form>
+
+
+
+
+@CodeGym, 2019

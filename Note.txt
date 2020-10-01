@@ -1,0 +1,8 @@
+-[(ngModel)]:
+
+<textarea [(ngModel)]="article.title" cols="70" [ngModelOptions]="{standalone: true}"></textarea>
+
+-get value:
+
+this.article.title = (document.getElementById('article-title') as HTMLInputElement).value;
+
