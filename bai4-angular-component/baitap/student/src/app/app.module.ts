@@ -6,13 +6,15 @@ import { StudentComponent } from './student/student.component';
 import { StudentDetailComponent } from './student-detail/student-detail.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { StudentEditComponent } from './student-edit/student-edit.component';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StudentComponent,
     StudentDetailComponent,
-    StudentEditComponent
+    StudentEditComponent,
+    ProgressBarComponent
   ],
     imports: [
         BrowserModule,
