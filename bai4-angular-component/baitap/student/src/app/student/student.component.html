@@ -1,0 +1,171 @@
+<div class="navbar" >
+
+</div>
+<div class="container" style="left: auto">
+  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#form">
+    Add New Student
+  </button>
+</div>
+
+<div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title" id="exampleModalLabel">Create Account</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="addNewStudent" (ngSubmit)="AddNewStudent(addNewStudent)">
+        <div class="modal-body">
+          <div class="form-group">
+
+            <label>ID</label>
+            <input type="number" class="form-control" formControlName="studentId"  placeholder="Enter ID">
+
+          </div>
+          <div class="form-group">
+
+            <label>Name</label>
+            <input type="text" class="form-control" formControlName="studentName"  placeholder="Enter Name">
+
+          </div>
+          <div class="form-group">
+
+            <label>Age</label>
+            <input type="number" class="form-control" formControlName="studentAge"  placeholder="Enter Age">
+
+          </div>
+          <div class="form-group">
+
+            <label>Address</label>
+            <input type="text" class="form-control" formControlName="studentAddress"  placeholder="Enter Address">
+
+          </div>
+          <div class="form-group">
+
+            <label>Email</label>
+            <input type="email" class="form-control" formControlName="studentEmail"  placeholder="Enter Email">
+
+          </div>
+
+
+        </div>
+        <div class="modal-footer border-top-0 d-flex justify-content-center">
+          <button type="submit" class="btn btn-success" >Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <td>ID</td>
+      <td>Name</td>
+      <td>Age</td>
+      <td>Email</td>
+      <td>Mark</td>
+      <td>Result</td>
+      <td>Detail</td>
+      <td>Action</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of students">
+      <td>{{student.studentId}}</td>
+      <td>{{student.studentName}}</td>
+      <td>{{student.studentAge}}</td>
+      <td>{{student.studentEmail}}</td>
+      <td>{{student.studentMark}}</td>
+      <td *ngIf="student.studentMark <5 || !student.studentMark " class="FAIL">FAIL</td>
+      <td *ngIf="student.studentMark >=5 " class="PASS">PASS</td>
+      <td>
+        <input type="button" value="Detail" class="btn btn-primary" (click)="detailStudent(student)">
+      </td>
+      <td>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formEdit" (click)="getInfo(student)" >
+          Edit
+        </button>
+<!--        <input type="button" value="Edit" class="btn btn-primary" (click)="remove(student.studentId)">-->
+
+        <input type="button" value="Delete" class="btn btn-danger" (click)="remove(student.studentId)">
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!--<form  *ngIf="isShowForm" #formElement="ngForm" (ngSubmit)="AddNewStudent(formElement)">-->
+<!--  <div class="form-group" >-->
+<!--    <input [(ngModel)]="tempStudent.studentId" name="studentId" >-->
+<!--    <input [(ngModel)]="tempStudent.studentName" name="studentName">-->
+<!--    <input [(ngModel)]="tempStudent.studentAge" name="studentAge">-->
+<!--    <input [(ngModel)]="tempStudent.studentEmail" name="studentEmail" >-->
+<!--    <input [(ngModel)]="tempStudent.studentAddress" name="studentAddress" >-->
+<!--    <button >Add</button>-->
+<!--  </div>-->
+<!--</form>-->
+
+
+<!--<button (click)="isShowForm = true" *ngIf="!isShowForm" >Add New Student</button>-->
+<app-student-detail *ngIf="studentDetail" [student]="studentDetail"  ></app-student-detail>
+<input *ngIf="studentDetail" type="button" class="btn btn-dark" (click)="studentDetail = null" value="OK">
+
+<!--(myOutput)="getMark($event)"-->
+
+
+<div class="modal fade" id="formEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"  >
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title" id="exampleModalLabel1">Edit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <form [formGroup]="editStudent" (ngSubmit)="EditStudent(editStudent)">
+          <div class="modal-body">
+            <div class="form-group">
+
+              <label >ID: {{studentNew.studentId}} </label>
+              <input type="hidden" class="form-control"  formControlName="studentId"  placeholder="Enter ID" >
+
+            </div>
+            <div class="form-group">
+
+              <label>Name</label>
+              <input type="text" class="form-control"  formControlName="studentName"  placeholder="Enter Name">
+
+            </div>
+            <div class="form-group">
+
+              <label>Age</label>
+              <input type="number" class="form-control" formControlName="studentAge"  placeholder="Enter Age">
+
+            </div>
+            <div class="form-group">
+
+              <label>Address</label>
+              <input type="text" class="form-control" formControlName="studentAddress"  placeholder="Enter Address">
+
+            </div>
+            <div class="form-group">
+
+              <label>Email</label>
+              <input type="email" class="form-control" formControlName="studentEmail"  placeholder="Enter Email">
+
+            </div>
+
+
+          </div>
+          <div class="modal-footer border-top-0 d-flex justify-content-center">
+            <button type="submit" class="btn btn-success">Submit</button>
+          </div>
+        </form>
+    </div>
+  </div>
+</div>
+
