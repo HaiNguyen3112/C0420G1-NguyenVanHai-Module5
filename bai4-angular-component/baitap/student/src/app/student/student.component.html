@@ -1,17 +1,89 @@
-<div class="navbar" >
+<div class="bs-example">
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a href="#" class="navbar-brand">
+      <img src="../../assets/img/snow.png" height="40" alt="CoolBrand">
+    </a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav">
+        <a href="#" class="nav-item nav-link active">Home</a>
+        <a href="#" class="nav-item nav-link">Customer</a>
+        <a href="#" class="nav-item nav-link">Employee</a>
+        <a href="#" class="nav-item nav-link">Contract</a>
+        <a href="#" class="nav-item nav-link disabled" tabindex="-1">Reports</a>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#form">
+          Add New Student
+        </button>
+      </div>
+      <div class="navbar-nav ml-auto">
+        <a href="#" class="nav-item nav-link">Login</a>
+      </div>
+    </div>
+  </nav>
 </div>
 <div class="container" style="left: auto">
-  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#form">
-    Add New Student
-  </button>
+  <table class="table table-striped table-hover" >
+    <thead >
+    <tr>
+      <td>ID</td>
+      <td>Name</td>
+      <td>Age</td>
+      <td>Email</td>
+      <td>Mark</td>
+      <td>Result</td>
+      <td>Detail</td>
+      <td>Action</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let student of students">
+      <td>{{student.studentId}}</td>
+      <td>{{student.studentName}}</td>
+      <td>{{student.studentAge}}</td>
+      <td>{{student.studentEmail}}</td>
+      <td>{{student.studentMark}}</td>
+      <td *ngIf="student.studentMark <5 || !student.studentMark " class="FAIL">FAIL</td>
+      <td *ngIf="student.studentMark >=5 " class="PASS">PASS</td>
+      <td>
+        <input type="button" value="Detail" class="btn btn-primary" (click)="detailStudent(student)">
+      </td>
+      <td>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formEdit" (click)="getInfo(student)" >
+          Edit
+        </button>
+        <!--        <input type="button" value="Edit" class="btn btn-primary" (click)="remove(student.studentId)">-->
+
+<!--        <input type="button" value="Delete" class="btn btn-danger" (click)="remove(student.studentId)">-->
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#formDelete" (click)="getInfo(student)">
+          Delete
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <footer class="page-footer font-small blue">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+      <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
 </div>
 
+
+<!--// Add new-->
 <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header border-bottom-0">
-        <h5 class="modal-title" id="exampleModalLabel">Create Account</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Create New Student</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -49,7 +121,6 @@
 
           </div>
 
-
         </div>
         <div class="modal-footer border-top-0 d-flex justify-content-center">
           <button type="submit" class="btn btn-success" >Submit</button>
@@ -59,64 +130,13 @@
   </div>
 </div>
 
-
-<table class="table">
-  <thead>
-    <tr>
-      <td>ID</td>
-      <td>Name</td>
-      <td>Age</td>
-      <td>Email</td>
-      <td>Mark</td>
-      <td>Result</td>
-      <td>Detail</td>
-      <td>Action</td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let student of students">
-      <td>{{student.studentId}}</td>
-      <td>{{student.studentName}}</td>
-      <td>{{student.studentAge}}</td>
-      <td>{{student.studentEmail}}</td>
-      <td>{{student.studentMark}}</td>
-      <td *ngIf="student.studentMark <5 || !student.studentMark " class="FAIL">FAIL</td>
-      <td *ngIf="student.studentMark >=5 " class="PASS">PASS</td>
-      <td>
-        <input type="button" value="Detail" class="btn btn-primary" (click)="detailStudent(student)">
-      </td>
-      <td>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formEdit" (click)="getInfo(student)" >
-          Edit
-        </button>
-<!--        <input type="button" value="Edit" class="btn btn-primary" (click)="remove(student.studentId)">-->
-
-        <input type="button" value="Delete" class="btn btn-danger" (click)="remove(student.studentId)">
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-
-<!--<form  *ngIf="isShowForm" #formElement="ngForm" (ngSubmit)="AddNewStudent(formElement)">-->
-<!--  <div class="form-group" >-->
-<!--    <input [(ngModel)]="tempStudent.studentId" name="studentId" >-->
-<!--    <input [(ngModel)]="tempStudent.studentName" name="studentName">-->
-<!--    <input [(ngModel)]="tempStudent.studentAge" name="studentAge">-->
-<!--    <input [(ngModel)]="tempStudent.studentEmail" name="studentEmail" >-->
-<!--    <input [(ngModel)]="tempStudent.studentAddress" name="studentAddress" >-->
-<!--    <button >Add</button>-->
-<!--  </div>-->
-<!--</form>-->
-
-
-<!--<button (click)="isShowForm = true" *ngIf="!isShowForm" >Add New Student</button>-->
 <app-student-detail *ngIf="studentDetail" [student]="studentDetail"  ></app-student-detail>
 <input *ngIf="studentDetail" type="button" class="btn btn-dark" (click)="studentDetail = null" value="OK">
 
 <!--(myOutput)="getMark($event)"-->
 
 
+<!--Edit-->
 <div class="modal fade" id="formEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"  >
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -169,3 +189,56 @@
   </div>
 </div>
 
+<!--Delete-->
+<div class="modal fade" id="formDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel2">Are you sure to delete this Student: </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="deleteStudent" (ngSubmit)="DeleteStudent(deleteStudent)">
+          <div class="modal-body">
+
+            <div class="form-group">
+              <label>ID: {{studentNew.studentId}}</label>
+            </div>
+            <div class="form-group">
+              <label>Name: {{studentNew.studentName}}</label>
+            </div>
+            <div class="form-group">
+              <label>Age: {{studentNew.studentAge}}</label>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-dark" data-dismiss="modal" aria-label="Close">
+                No
+              </button>
+              <button type="submit" class="btn btn-primary" >
+                Delete</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--<form  *ngIf="isShowForm" #formElement="ngForm" (ngSubmit)="AddNewStudent(formElement)">-->
+<!--  <div class="form-group" >-->
+<!--    <input [(ngModel)]="tempStudent.studentId" name="studentId" >-->
+<!--    <input [(ngModel)]="tempStudent.studentName" name="studentName">-->
+<!--    <input [(ngModel)]="tempStudent.studentAge" name="studentAge">-->
+<!--    <input [(ngModel)]="tempStudent.studentEmail" name="studentEmail" >-->
+<!--    <input [(ngModel)]="tempStudent.studentAddress" name="studentAddress" >-->
+<!--    <button >Add</button>-->
+<!--  </div>-->
+<!--</form>-->
+
+
+<!--<button (click)="isShowForm = true" *ngIf="!isShowForm" >Add New Student</button>-->

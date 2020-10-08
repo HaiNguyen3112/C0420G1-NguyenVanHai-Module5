@@ -2,6 +2,12 @@
   English-Vietnamese Dictionary
 </h2>
 
-<input type="text" (change)="search($event.target.value)">
+<!--<input type="text" (change)="search($event.target.value)">-->
 
-<p *ngIf="word">Nghĩa của từ {{word.key}}: {{word.meaning}}</p>
+<!--<p *ngIf="word">Nghĩa của từ {{word.key}}: {{word.meaning}}</p>-->
+
+<form [formGroup]="formAdd"  (ngSubmit)="Add(formAdd)">
+  <input type="text"   formControlName="key"  placeholder="key" >
+  <input type="text"  formControlName="meaning"  placeholder="meaning" >
+  <input type="submit" value="Add">
+</form>

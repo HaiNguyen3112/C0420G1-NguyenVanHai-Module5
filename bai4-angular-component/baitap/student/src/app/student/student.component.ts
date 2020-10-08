@@ -22,6 +22,7 @@ export class StudentComponent implements OnInit {
   isEdit = false;
   addNewStudent: FormGroup;
   editStudent: FormGroup;
+  deleteStudent: FormGroup;
   studentNew = new Student();
   // tslint:disable-next-line:typedef
   detailStudent(value) {
@@ -37,6 +38,13 @@ export class StudentComponent implements OnInit {
   remove(index) {
     const idx = this.students.findIndex(student => student.studentId === index);
     this.students.splice(idx, 1);
+  }
+  // tslint:disable-next-line:typedef
+  DeleteStudent(form){
+    this.studentNew = form.value;
+    const index = this.students.findIndex(student => student.studentId === this.studentNew.studentId);
+    this.students.splice(index, 1);
+    document.getElementById('formDelete').click();
   }
   // tslint:disable-next-line:typedef
   AddNewStudent(form) {
@@ -74,6 +82,11 @@ export class StudentComponent implements OnInit {
       studentAge: new FormControl(''),
       studentEmail: new FormControl(''),
       studentAddress: new FormControl(''),
+    });
+    this.deleteStudent = new FormGroup({
+      studentId: new FormControl(''),
+      studentName: new FormControl(''),
+      studentAge: new FormControl(''),
     });
   }
 }

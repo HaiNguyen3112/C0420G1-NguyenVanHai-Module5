@@ -9,6 +9,7 @@ import { YoutubePlayerComponent } from './youtube-player/youtube-player.componen
 import { DictionaryDetailComponent } from './dictionary-detail/dictionary-detail.component';
 import { DictionaryPageComponent } from './dictionary-page/dictionary-page.component';
 import { DictionaryComponent } from './dictionary/dictionary.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DictionaryComponent } from './dictionary/dictionary.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
